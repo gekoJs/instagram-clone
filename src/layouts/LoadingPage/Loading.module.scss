@@ -1,0 +1,40 @@
+.container {
+  font-family: var(--f1);
+  min-height: 100vh;
+  height: 100vh;
+  svg {
+    width: 8em;
+    height: 8em;
+  }
+  main{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.div {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  svg {
+    width: 1.4em;
+    height: 1.4em;
+    fill: #E34D69;
+  }
+  p {
+    display: flex;
+    align-items: center;
+    color: #E34D69;
+    font-weight: 500;
+    
+  }
+  .from{
+    color: var(--c6);
+  }
+}
