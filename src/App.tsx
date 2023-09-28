@@ -1,11 +1,13 @@
-import { Login } from './layouts'
+import { LoadingPage, Login, Signup } from "./layouts";
 
 const App = () => {
   return (
     <div>
-        <Login/>
+      {/* <Login/> */}
+      <Signup />
+      {/* <LoadingPage/> */}
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

@@ -1,0 +1,96 @@
+@mixin center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  @include center;
+  min-height: 100vh;
+  font-family: var(--f1);
+}
+.wrapper {
+  @include center;
+  display: flex;
+  flex-direction: column;
+  max-width: 23.75em;
+  gap: 1em;
+  padding: 1em;
+  article {
+    width: 100%;
+    border: 1px solid var(--c3);
+    padding: 3em 3em;
+  }
+  .form_wrapper {
+    @include center;
+    flex-direction: column;
+    gap: 1em;
+    color: var(--c6);
+
+    .logo {
+      width: 11.25em;
+    }
+
+    .p1 {
+      font-size: 0.87em;
+      text-align: center;
+      font-weight: 500;
+      color: var(--c6);
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6em;
+      width: 100%;
+    }
+    input {
+      font-family: var(--f1);
+      width: 100%;
+      padding: 0.6em;
+      font-size: .75em;
+      background-color: var(--c1);
+      border: 1px solid var(--c3);
+      outline: none;
+    }
+    .terms {
+      font-size: 11px;
+      text-align: center;
+      span {
+        font-weight: 500;
+        color: var(--c7);
+      }
+    }
+    button {
+      background-color: var(--c5);
+      color: var(--c1);
+      font-size: 0.87em;
+      font-weight: 600;
+      border: none;
+      padding: 0.6em;
+      border-radius: 0.6em;
+      width: 100%;
+      cursor: pointer;
+    }
+  }
+}
+
+.divide {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  width: 100%;
+  span {
+    width: 100%;
+  }
+}
+
+.signin {
+  font-size: 13px;
+  margin: auto;
+  @include center;
+  a {
+    color: var(--c5);
+    font-weight: 600;
+    text-decoration: none;
+  }
+}
