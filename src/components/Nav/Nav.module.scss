@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  width: 100%;
+  max-width: 244px;
+  padding: 8px 12px 20px;
+  border-right: 1px solid var(--c8);
+  position: sticky;
+  top: 0;
+}
+.logo {
+  width: 100%;
+  text-align: left;
+  svg {
+    width: 104px;
+  }
+}
+.main_btns_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.main_btns {
+  font-family: var(--f1);
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  &:hover{
+    background-color: var(--c8);
+  }
+}
+.nav_btn {
+  padding: 1em;
+  border-radius: 1em;
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
+}

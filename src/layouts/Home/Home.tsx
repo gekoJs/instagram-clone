@@ -1,9 +1,11 @@
-import { PostCard } from "../../components";
+import { AllCards, Stories } from "../../components";
+import style from "./Home.module.scss"
 
 const Home = () => {
   return (
-    <div>
-      <PostCard />
+    <div className={style.container}>
+      <Stories/>
+      <AllCards />
     </div>
   );
 };
