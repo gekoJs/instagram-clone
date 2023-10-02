@@ -1,9 +1,10 @@
 import useChangeTitle from "../../Hooks/useChangeTitle";
 import { Logotipo } from "../../assets/svg";
 import style from "./Signup.module.scss";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
-    useChangeTitle("Instanel - SignUp")
+  useChangeTitle("Instanel - SignUp");
   return (
     <section className={style.container}>
       <main className={style.wrapper}>
@@ -48,7 +49,7 @@ const Signup = () => {
 
         <article className={style.signin}>
           <p>
-            Have an account? <a href="">Log in</a>{" "}
+            Have an account? <Link to={"/"}>Log in</Link>
           </p>
         </article>
       </main>
