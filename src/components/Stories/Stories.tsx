@@ -22,7 +22,7 @@ const StoryPost = () => {
           />
         </div>
       </div>
-      <p>pepe69</p>
+      <p>user</p>
     </div>
   );
 };

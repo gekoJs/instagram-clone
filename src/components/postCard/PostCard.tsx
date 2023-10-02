@@ -62,7 +62,7 @@ const PostCard = () => {
           className={`${style.btn_svg} ${!saved ? `${style.share_hov}` : ""}`}
           onClick={() => setSaved((prev) => !prev)}
         >
-          <BookmarkIcon />
+          <BookmarkIcon fill={saved ? "#000" : "none"} />
         </button>
       </div>
 
