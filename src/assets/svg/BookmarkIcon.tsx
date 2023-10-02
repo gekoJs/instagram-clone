@@ -1,13 +1,9 @@
-const BookmarkIcon = () => {
+const BookmarkIcon = ({ fill }: { fill: string }) => {
   return (
-    <svg
-      aria-label="Save"
-      role="img"
-      viewBox="0 0 24 24"
-    >
+    <svg aria-label="Save" role="img" viewBox="0 0 24 24">
       <title>Save</title>
       <polygon
-        fill="none"
+        fill={fill}
         points="20 21 12 13.44 4 21 4 3 20 3 20 21"
         stroke="#000"
         stroke-linecap="round"
@@ -16,6 +12,10 @@ const BookmarkIcon = () => {
       ></polygon>
     </svg>
   );
+};
+
+BookmarkIcon.defaultProps = {
+  fill: "none",
 };
 
 export default BookmarkIcon;
