@@ -1,6 +1,7 @@
 import style from "./Login.module.scss";
 import { Facebook, Logotipo } from "../../assets/svg";
 import useChangeTitle from "../../Hooks/useChangeTitle";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   useChangeTitle("Instanel - Login");
@@ -48,9 +49,9 @@ const Login = () => {
             </div>
           </div>
 
-          <div className={style.sign_up}>
+          <div className={style.sign_up}> 
             <p>
-              Don't have an account? <a href="">Sign up</a>
+              Don't have an account? <Link to={"/signup"}>Sign up</Link>
             </p>
           </div>
         </div>
