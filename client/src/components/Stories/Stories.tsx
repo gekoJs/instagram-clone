@@ -1,9 +1,9 @@
-import React from "react";
 import style from "./Stories.module.scss";
 
 const Stories = () => {
   return (
     <div className={style.container}>
+      
       {Array.from({ length: 8 }, () => {
         return <StoryPost />;
       })}
