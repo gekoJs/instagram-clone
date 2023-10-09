@@ -2,6 +2,8 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 
+const userRoute = require("./routes/userRoutes");
+
 const app = express();
 
 app.use(cors());
@@ -17,6 +19,8 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use("/users", userRoute);
+
 app.use(express.json());
 
-module.exports = app ;
+module.exports = app;
