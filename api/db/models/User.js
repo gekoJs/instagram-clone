@@ -1,7 +1,6 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (db) => {
-  console.log("USERRRRRRRRRRRRRRRRRRRR")
   db.define("User", {
     id: {
       type: DataTypes.UUID,
@@ -25,5 +24,8 @@ module.exports = (db) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    profileImg: {
+      type: DataTypes.STRING,
+    }
   });
 };
