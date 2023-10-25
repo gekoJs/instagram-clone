@@ -44,7 +44,7 @@ const PostCard = () => {
       <div className={style.icon_wrapper}>
         <div>
           <button
-            className={`${style.btn_svg} ${!like ? `${style.like_hov}` : ""}`}
+            className={`${style.btn_svg} ${!like ? `${style.like_hov}` : `${style.like}`}`}
             onClick={() => setLike((prev) => !prev)}
           >
             {like ? <UnlikeIcon /> : <LikeIcon />}
@@ -59,10 +59,10 @@ const PostCard = () => {
           </button>
         </div>
         <button
-          className={`${style.btn_svg} ${!saved ? `${style.share_hov}` : ""}`}
+          className={`${style.btn_svg} ${!saved ? `${style.share_hov}` : `${style.saved}`}`}
           onClick={() => setSaved((prev) => !prev)}
         >
-          <BookmarkIcon fill={saved ? "#000" : "none"} />
+          <BookmarkIcon/>
         </button>
       </div>
 

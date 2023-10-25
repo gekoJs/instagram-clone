@@ -18,12 +18,12 @@ const Footer = () => {
     <div className={style.container}>
       <div className={style.links_wrapper}>
         {links.map((link, i) => (
-          <>
+          <div key={link.text}>
             {i !== 0 && <div className={style.dot} />}
             <a href={link.to} className={style.a}>
               {link.text}
             </a>
-          </>
+          </div>
         ))}
       </div>
       <p>© 2023 INSTANEL FROM DANIEL ROA</p>

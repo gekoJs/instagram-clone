@@ -1,0 +1,36 @@
+.container {
+  background-color: var(--c8);
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 250px;
+  border-radius: 1em;
+  padding: .6em 0;
+  button {
+    font-family: var(--f1);
+    display: flex;
+    align-items: center;
+    gap: .4em;
+    padding: 1em;
+    background-color: transparent;
+    border: none;
+    border-radius: 1em;
+    margin: 0 .6em;
+    cursor: pointer;
+    svg{
+        width: 20px;
+    }
+    &:hover{
+        background-color: var(--c6);
+        color: var(--c1);
+        polygon{
+            stroke: var(--c1);
+        }
+    }
+  }
+}
+.wrapperBtns {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+}

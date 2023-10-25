@@ -1,0 +1,23 @@
+.container {
+  display: fixed;
+  position: absolute;
+  backdrop-filter: blur(4px);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wrapper{
+    background-color: var(--c5);
+    text-align: center;
+    color: var(--c1);
+    fill: var(--c1);
+    padding: 1em;
+    font-family: var(--f1);
+    border-radius: 1em;
+    svg{
+        width: 3em;
+        height: 3em;
+    }
+}

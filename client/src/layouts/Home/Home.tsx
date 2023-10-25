@@ -7,7 +7,7 @@ const Home = () => {
   const breakpoint = width >= 1120;
   return (
     <div className={style.container}>
-      <div>
+      <div className={style.wrapper}>
         <Stories />
         <AllCards />
       </div>

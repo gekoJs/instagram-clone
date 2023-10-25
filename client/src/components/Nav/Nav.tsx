@@ -3,10 +3,14 @@ import BurguerMenuIcon from "../../assets/svg/BurguerMenuIcon";
 import style from "./Nav.module.scss";
 import IsotipoBWIcon from "../../assets/svg/IsotipoBWIcon";
 import useWidth from "../../Hooks/useWidth";
+import { useState } from "react";
+import MoreModal from "../Modals/MoreModal/MoreModal";
 
 const Nav = () => {
   const { width } = useWidth();
   const breakPoint = width >= 1264;
+
+  const [openModal, setOpenModal] = useState(false);
 
   const mainBtns = [
     { icon: <HomeIcon />, text: "Home", action: () => {} },
@@ -35,17 +39,33 @@ const Nav = () => {
 
       <div className={style.main_btns_wrapper}>
         {mainBtns.map((btn) => (
-          <button className={`${style.nav_btn} ${style.main_btns}`}>
+          <button
+            className={`${style.nav_btn} ${style.main_btns}`}
+            key={btn.text}
+          >
             {btn.icon}
             {breakPoint && <p>{btn.text}</p>}
           </button>
         ))}
       </div>
 
-      <button className={`${style.nav_btn} ${style.main_btns}`}>
-        <BurguerMenuIcon />
-        {breakPoint && <p>More</p>}
-      </button>
+      <div className={style.wrapperMore}>
+        {openModal && (
+          <div
+            className={style.modalContainer}
+            onMouseLeave={() => setOpenModal(false)}
+          >
+            <MoreModal />
+          </div>
+        )}
+        <button
+          className={`${style.nav_btn} ${style.main_btns}`}
+          onClick={() => setOpenModal(!openModal)}
+        >
+          <BurguerMenuIcon />
+          {breakPoint && <p>More</p>}
+        </button>
+      </div>
     </div>
   );
 };

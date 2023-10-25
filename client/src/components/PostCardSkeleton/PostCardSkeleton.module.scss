@@ -1,0 +1,102 @@
+.container {
+  width: 100%;
+  max-width: 470px;
+  background-color: var(--c1);
+  border-radius: 1em;
+  animation: opacity 1s ease-in infinite;
+}
+.header,
+.wrapper,
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header {
+  padding: 0.4em;
+  .wrapper {
+    gap: 0.4em;
+    .userImg {
+      width: 48px;
+      height: 48px;
+      border-radius: 100%;
+      background-color: var(--c6);
+    }
+    .userName {
+      width: 8em;
+      height: 0.8em;
+      background-color: var(--c6);
+      border-radius: 2em;
+    }
+  }
+  svg {
+    fill: var(--c6);
+  }
+}
+
+.img {
+  background-color: var(--c6);
+  width: 100%;
+  max-width: 470px;
+  height: 20em;
+}
+
+.actions {
+  padding: 0.4em;
+  .wrapper {
+    fill: var(--c6);
+    gap: 0.4em;
+    .icon2 {
+      polygon,
+      path,
+      line {
+        fill: var(--c6);
+        stroke: var(--c6);
+      }
+    }
+  }
+  .icon2 {
+    polygon {
+      fill: var(--c6);
+      stroke: var(--c6);
+    }
+  }
+}
+.wrapperVert {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+  padding: 0.4em;
+}
+.likes,
+.description,
+.description2 {
+  width: 6em;
+  height: 0.8em;
+  background-color: var(--c6);
+  border-radius: 0.8em;
+}
+
+.descriptionWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+}
+.description {
+  width: 100%;
+}
+.description2 {
+  width: 70%;
+}
+
+@keyframes opacity {
+    0%{
+        opacity: .4;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: .4;
+    }
+}

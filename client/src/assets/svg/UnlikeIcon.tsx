@@ -2,8 +2,6 @@ const UnlikeIcon = () => {
   return (
     <svg
       aria-label="Unlike"
-      color="rgb(255, 48, 64)"
-      fill="rgb(255, 48, 64)"
       height="24"
       role="img"
       viewBox="0 0 48 48"
@@ -15,4 +13,7 @@ const UnlikeIcon = () => {
   );
 };
 
+UnlikeIcon.defaultProps = {
+  fill: "rgb(255, 48, 64)",
+};
 export default UnlikeIcon;

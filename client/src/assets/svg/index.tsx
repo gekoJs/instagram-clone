@@ -10,3 +10,6 @@ export { default as MoreIcon} from "./MoreIcon";
 export { default as HomeIcon} from "./HomeIcon";
 export { default as SearchIcon} from "./SearchIcon";
 export { default as BurguerMenuIcon} from "./BurguerMenuIcon";
+export { default as AlertIcon} from "./AlertIcon";
+export { default as DarkThemeIcon} from "./DarkThemeIcon";
+export { default as SettingsIcon} from "./SettingsIcon";

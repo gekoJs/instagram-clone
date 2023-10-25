@@ -89,6 +89,7 @@
   font-size: 0.75em;
   flex-direction: column;
   gap: 1em;
+  button,
   a {
     text-decoration: none;
     display: flex;
@@ -97,6 +98,10 @@
     gap: 0.8em;
     font-family: var(--f1);
     color: var(--c7);
+    border: none;
+    background: none;
+    cursor: pointer;
+
   }
   .facebook {
     font-weight: 700;

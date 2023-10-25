@@ -29,6 +29,7 @@
 
     .logo {
       width: 11.25em;
+      text-align: center;
     }
 
     .p1 {
@@ -38,19 +39,35 @@
       color: var(--c6);
     }
     form {
+      width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 0.6em;
-      width: 100%;
+      gap: 0.8em;
+      div {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8em;
+      }
+      .inputsWrapper {
+        gap: 0.6em;
+      }
     }
     input {
       font-family: var(--f1);
       width: 100%;
       padding: 0.6em;
-      font-size: .75em;
+      font-size: 0.75em;
       background-color: var(--c1);
       border: 1px solid var(--c3);
       outline: none;
+    }
+    .error {
+      border-color: var(--c9);
+    }
+    .errorSpan {
+      color: var(--c9);
+      font-size: 0.6em;
+      font-weight: 600;
     }
     .terms {
       font-size: 11px;
@@ -93,4 +110,10 @@
     font-weight: 600;
     text-decoration: none;
   }
+}
+
+.existError {
+  color: var(--c9);
+  text-align: center;
+  font-size: 0.8em;
 }

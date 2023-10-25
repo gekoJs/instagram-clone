@@ -2,6 +2,8 @@ import { Footer } from "..";
 import style from "./AsideSuggestions.module.scss";
 
 const AsideSuggestions = () => {
+  const arr = [0, 1, 2, 3, 4];
+
   return (
     <div className={style.container}>
       <UserTag
@@ -18,17 +20,18 @@ const AsideSuggestions = () => {
       </div>
 
       <div className={style.users}>
-        {Array.from({ length: 5 }, (v, i) => {
-          return (
-            <UserTag
-              img="https://www.anmosugoi.com/wp-content/uploads/2023/09/Kanojo-Okarishimasu-Chizuru-Mizuhara-min-11.jpg"
-              userName="user"
-              name={"user" + v + i}
-              actionName="Follow"
-              action={() => {}}
-            />
-          );
-        })}
+        {arr.map((e) => (
+          // <div key={e}>
+          <UserTag
+            key={e}
+            img="https://www.anmosugoi.com/wp-content/uploads/2023/09/Kanojo-Okarishimasu-Chizuru-Mizuhara-min-11.jpg"
+            userName="user"
+            name={"user" + e}
+            actionName="Follow"
+            action={() => {}}
+          />
+          // </div>
+        ))}
       </div>
 
       <Footer />
@@ -43,6 +46,7 @@ type UserTagProps = {
   action: () => void;
   actionName: "Follow" | "Switch";
 };
+
 const UserTag = ({ img, userName, name, action, actionName }: UserTagProps) => {
   return (
     <div className={style.tag_container}>
