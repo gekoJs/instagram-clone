@@ -37,4 +37,14 @@
   background: none;
   outline: none;
   cursor: pointer;
+  width: 100%;
+}
+.wrapperMore{
+  position: relative;
+  width: 100%;
+}
+
+.modalContainer{
+  position: absolute;
+  bottom: 120%;
 }

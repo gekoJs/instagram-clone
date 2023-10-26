@@ -13,6 +13,11 @@
   gap: 0.4em;
   flex-wrap: wrap;
   line-height: 10px;
+  div {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+  }
 }
 .dot {
   width: 4px;

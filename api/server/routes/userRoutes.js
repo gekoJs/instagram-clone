@@ -20,10 +20,14 @@ userRoute.post("/", async (req, res) => {
     const [user, created] = await CreateUser(req.body);
 
     if (!created) {
-      res.json({ message: `user with the email ${user.email} already exists` });
+      res.json({
+        message: `user with the email ${user.email} already exists`,
+        created: false,
+      });
     } else {
       res.status(201).json({
         message: "User created succesfully",
+        created: true,
         data: user,
       });
     }

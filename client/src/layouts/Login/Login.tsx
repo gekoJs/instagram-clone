@@ -2,12 +2,17 @@ import style from "./Login.module.scss";
 import { Facebook, Logotipo } from "../../assets/svg";
 import useChangeTitle from "../../Hooks/useChangeTitle";
 import { Link } from "react-router-dom";
+import NotAvailable from "../../components/NotAvailable/NotAvailable";
+import useShowWarning from "../../Hooks/useShowWarning";
 
 const Login = () => {
   useChangeTitle("Instanel - Login");
 
+  const { warningActive, setWarningActive } = useShowWarning();
+
   return (
     <section className={style.container}>
+      {warningActive && <NotAvailable />}
       <main className={style.content_wrapper}>
         <div className={style.img_wrapper}>
           <img
@@ -40,16 +45,16 @@ const Login = () => {
             </div>
 
             <div className={style.other_options}>
-              <a href="">
+              <button onClick={() => setWarningActive(true)}>
                 <Facebook />
                 <p className={style.facebook}>login with facebook</p>
-              </a>
+              </button>
 
               <a href="">Forgot password?</a>
             </div>
           </div>
 
-          <div className={style.sign_up}> 
+          <div className={style.sign_up}>
             <p>
               Don't have an account? <Link to={"/signup"}>Sign up</Link>
             </p>

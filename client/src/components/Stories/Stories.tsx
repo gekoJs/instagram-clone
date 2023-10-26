@@ -3,10 +3,11 @@ import style from "./Stories.module.scss";
 const Stories = () => {
   return (
     <div className={style.container}>
-      
-      {Array.from({ length: 8 }, () => {
-        return <StoryPost />;
-      })}
+      {Array.from([0, 1, 2, 3, 4, 5, 6, 7]).map((e) => (
+        <div key={e}>
+          <StoryPost />
+        </div>
+      ))}
     </div>
   );
 };
