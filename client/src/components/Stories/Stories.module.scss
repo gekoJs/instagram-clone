@@ -7,8 +7,12 @@
 }
 .post_container{
     display: flex;
+    border: none;
     flex-direction: column;
+    background: none;
+    outline: none;
     align-items: center;
+    cursor: pointer;
     p{
     font-size: .7em;
 

@@ -7,11 +7,10 @@ function useShowWarning() {
   function handleShowWarning(
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) {
-
     setPositions({
-      top: e.clientY - 20,
+      top: e.pageY - 20,
       left:
-        e.clientX > window.innerWidth / 2 ? e.clientX - 200 : e.clientX + 20,
+        e.pageX > window.innerWidth / 2 ? e.pageX - 200 : e.pageX + 20,
     });
 
     setWarningActive(true);

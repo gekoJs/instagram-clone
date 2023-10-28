@@ -1,5 +1,4 @@
 import { routeUsers } from "../../utils/routeKeys";
-import axios from "axios";
 
 //-----------------------------------------------
 

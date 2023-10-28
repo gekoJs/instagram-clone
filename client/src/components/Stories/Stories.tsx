@@ -1,20 +1,21 @@
+import { CurrentWarningContext } from "../../layouts/MainLayout/MainLayout";
 import style from "./Stories.module.scss";
+import {useContext} from "react"
 
 const Stories = () => {
   return (
     <div className={style.container}>
       {Array.from([0, 1, 2, 3, 4, 5, 6, 7]).map((e) => (
-        <div key={e}>
-          <StoryPost />
-        </div>
+        <StoryPost key={e} />
       ))}
     </div>
   );
 };
 
 const StoryPost = () => {
+  const warningContext= useContext(CurrentWarningContext)
   return (
-    <div className={style.post_container}>
+    <button onClick={warningContext?.handleShowWarning} className={style.post_container}>
       <div className={style.wrapper_img}>
         <div className={style.post_img}>
           <img
@@ -24,7 +25,7 @@ const StoryPost = () => {
         </div>
       </div>
       <p>user</p>
-    </div>
+    </button>
   );
 };
 

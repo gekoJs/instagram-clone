@@ -1,4 +1,6 @@
+import { CurrentWarningContext } from "../../layouts/MainLayout/MainLayout";
 import style from "./Footer.module.scss";
+import { useContext } from "react";
 
 const links = [
   { text: "About", to: "" },
@@ -14,16 +16,18 @@ const links = [
 ];
 
 const Footer = () => {
+  const warningContext = useContext(CurrentWarningContext);
+
   return (
     <div className={style.container}>
       <div className={style.links_wrapper}>
         {links.map((link, i) => (
-          <div key={link.text}>
+          <button onClick={warningContext?.handleShowWarning} key={link.text}>
             {i !== 0 && <div className={style.dot} />}
-            <a href={link.to} className={style.a}>
+            <a  className={style.a}>
               {link.text}
             </a>
-          </div>
+          </button>
         ))}
       </div>
       <p>© 2023 INSTANEL FROM DANIEL ROA</p>
