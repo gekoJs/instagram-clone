@@ -2,15 +2,17 @@ import useChangeTitle from "../../Hooks/useChangeTitle";
 import { Logotipo } from "../../assets/svg";
 import style from "./Signup.module.scss";
 import { Link } from "react-router-dom";
-import useCreateUser from "../../Hooks/useCreateUser";
+import useSignUp from "../../Hooks/useSignUp";
 
 const Signup = () => {
   useChangeTitle("Instanel - SignUp");
   const { values, errors, handleChange, handleSubmit, userMutation } =
-    useCreateUser();
+    useSignUp();
 
   const { isPending, data } = userMutation;
-  
+
+  // console.log(error.response);
+
   return (
     <section className={style.container}>
       <main className={style.wrapper}>
@@ -73,9 +75,9 @@ const Signup = () => {
               <span className={style.errorSpan}>{errors.password}</span>
             </div>
 
-            {data?.data.created === false && (
+            {errors.signUp && (
               <div>
-                <p className={style.existError}>User already exists</p>
+                <p className={style.existError}>{errors.signUp}</p>
               </div>
             )}
 

@@ -1,8 +1,27 @@
-export type dataType = {
-    message: string,
-    data: post[] | null
-    error?: string
-} 
+export interface userDataType {
+  message?: string;
+  data?: userData;
+  error?: string;
+}
+export interface userData {
+  id: string;
+  userName: string;
+  fullName: string;
+  email: string;
+  phone?: null;
+  password: string;
+  profileImg: string;
+  createdAt: string;
+  updatedAt: string;
+  Posts?: post[] | null;
+  Likes?: LikesEntity[] | null;
+}
+
+export type postDataType = {
+  message?: string;
+  data?: post[] | null;
+  error?: string;
+};
 
 export interface post {
   id: string;

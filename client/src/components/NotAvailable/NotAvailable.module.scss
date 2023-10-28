@@ -1,23 +1,35 @@
 .container {
-  display: fixed;
-  position: absolute;
-  backdrop-filter: blur(4px);
-  width: 100%;
-  height: 100vh;
   display: flex;
+  opacity: 0;
+  pointer-events: none;
   align-items: center;
-  justify-content: center;
+  gap: .6em;
+  background-color: var(--c10);
+  font-size: .8em;
+  position: absolute;
+  text-align: center;
+  color: var(--c2);
+  padding: .6em;
+  font-family: var(--f1);
+  border-radius: 1em;
+  svg {
+    max-width: 2em;
+    fill: var(--c2);
+    height: 100%;
+  }
 }
-.wrapper{
-    background-color: var(--c5);
-    text-align: center;
-    color: var(--c1);
-    fill: var(--c1);
-    padding: 1em;
-    font-family: var(--f1);
-    border-radius: 1em;
-    svg{
-        width: 3em;
-        height: 3em;
-    }
+
+.animation{
+  animation: appears 1.5s ease;
+}
+@keyframes appears {
+  0%{
+    opacity: 0;
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
 }

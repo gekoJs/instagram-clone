@@ -2,7 +2,7 @@ import { useState } from "react";
 import validateUserSignUp from "../utils/validateUserSignUp";
 import { useMutation } from "@tanstack/react-query";
 import { postUser } from "../helpers/fetchers/users";
-import { IS_LOGGED } from "../utils/localStorageKeys";
+import LogInHelper from "../helpers/LogInHelper";
 
 type values = {
   email: string;
@@ -16,9 +16,10 @@ type errors = {
   fullName?: string;
   userName?: string;
   password?: string;
+  signUp?: string;
 };
 
-function useCreateUser() {
+function useSignUp() {
   const [values, setValues] = useState<values>({
     email: "",
     fullName: "",
@@ -30,28 +31,26 @@ function useCreateUser() {
   const userMutation = useMutation({
     mutationFn: postUser,
     onSuccess: (data) => {
-      if (data.data.created === true) {
+      if (!data.error && data.data) {
         setValues({
           email: "",
           fullName: "",
           userName: "",
           password: "",
         });
-
-        window.localStorage.setItem(
-          IS_LOGGED,
-          JSON.stringify({ isLogged: true })
-        );
-
-        window.location.assign("/");
+        LogInHelper(data.data);
       }
+      setErrors((prev) => ({ ...prev, signUp: data.error }));
     },
   });
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setValues((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value,
+      [e.target.name]:
+        e.target.name === "userName"
+          ? e.target.value.toLowerCase()
+          : e.target.value,
     }));
   }
 
@@ -61,10 +60,11 @@ function useCreateUser() {
     setErrors(validatedErrors);
 
     if (Object.keys(validatedErrors).length === 0) {
+      console.log("useSignUp", values);
       userMutation.mutate(values);
     }
   }
 
   return { values, errors, handleChange, handleSubmit, userMutation };
 }
-export default useCreateUser;
+export default useSignUp;

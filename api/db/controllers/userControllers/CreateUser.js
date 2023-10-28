@@ -1,8 +1,12 @@
+const { Op } = require("sequelize");
 const { User } = require("../../index");
 
 async function CreateUser(obj) {
   const { userName, fullName, email, password } = obj;
-  const objValues = { userName, fullName, email, password }
+  const objValues = { userName, fullName, email, password };
+  
+  console.log("CreateUser",obj);
+  
   try {
     if (Object.values(objValues).some((e) => e === undefined)) {
       const missing = Object.keys(objValues)
@@ -10,13 +14,17 @@ async function CreateUser(obj) {
         .join(", ");
       throw new Error(`Missing data (${missing})`);
     }
-    
-    const user = User.findOrCreate({
-      where: { email: email },
+
+    const user = await User.findOrCreate({
+      where: {
+        [Op.or]: [{ email: email }, { userName: userName }],
+      },
+
       defaults: {
         ...objValues,
       },
     });
+
     return user;
   } catch (error) {
     throw error;

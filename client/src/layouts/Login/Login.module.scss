@@ -45,16 +45,11 @@
     gap: 0.6em;
     font-weight: 600;
     flex-direction: column;
-    input {
-      font-family: var(--f1);
-      width: 280px;
-      font-size: 0.75em;
-      padding: 0.8em 1.6em;
-      background: var(--c4);
-      border: 1px solid var(--c3);
-      outline: none;
-    }
+
     button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-family: Arial;
       background-color: var(--c5);
       font-size: 0.75em;
@@ -101,7 +96,6 @@
     border: none;
     background: none;
     cursor: pointer;
-
   }
   .facebook {
     font-weight: 700;
@@ -124,4 +118,34 @@
     font-weight: 700;
     text-decoration: none;
   }
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+}
+.error {
+  color: var(--c9);
+  font-size: 0.6em;
+  text-align: left;
+}
+.errorLogin {
+  color: var(--c9);
+  text-align: center;
+  margin: auto;
+  font-size: 1em;
+  text-align: left;
+}
+.input {
+  font-family: var(--f1);
+  width: 280px;
+  font-size: 0.75em;
+  padding: 0.8em 1.6em;
+  background: var(--c4);
+  border: 1px solid var(--c3);
+  outline: none;
+}
+.isError {
+  // border: 2PX solid black;
+  border-color: var(--c9);
 }
