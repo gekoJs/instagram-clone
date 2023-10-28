@@ -14,6 +14,7 @@
 
 .header_wrapper {
   display: flex;
+  font-family: var(--f1);
   align-items: center;
   gap: 0.4em;
   font-size: 1em;
@@ -23,6 +24,11 @@
   }
 }
 
+.button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
 .dot {
   width: 4px;
   height: 4px;
@@ -105,14 +111,19 @@
 }
 .history {
   font-size: 0.9em;
-  span {
+
+  button {
+    font-size: 1em;
+    font-family: var(--f1);
     font-weight: 600;
+    margin-right: .3em;
   }
 }
 .view_comments {
   width: fit-content;
   text-decoration: underline;
   color: var(--c6);
+  font-family: var(--f1);
   cursor: pointer;
   font-size: 0.8em;
 }

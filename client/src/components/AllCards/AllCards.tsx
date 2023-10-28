@@ -32,6 +32,7 @@ const AllCards = () => {
   //     </div>
   //   );
   // }
+  
   const arr = [1, 2, 3, 4];
   return (
     <div className={style.container}>

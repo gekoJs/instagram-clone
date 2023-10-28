@@ -5,6 +5,7 @@ import { useContext } from "react";
 
 const AsideSuggestions = () => {
   const arr = [0, 1, 2, 3, 4];
+  const warningContext = useContext(CurrentWarningContext);
 
   return (
     <div className={style.container}>
@@ -13,7 +14,7 @@ const AsideSuggestions = () => {
         userName="User"
         name="Lorem ipsum"
         actionName="Switch"
-        action={() => {}}
+        action={warningContext?.handleShowWarning}
       />
 
       <div className={style.all_suggestions}>
@@ -23,16 +24,14 @@ const AsideSuggestions = () => {
 
       <div className={style.users}>
         {arr.map((e) => (
-          // <div key={e}>
           <UserTag
             key={e}
             img="https://www.anmosugoi.com/wp-content/uploads/2023/09/Kanojo-Okarishimasu-Chizuru-Mizuhara-min-11.jpg"
             userName="user"
             name={"user" + e}
             actionName="Follow"
-            action={() => {}}
+            action={warningContext?.handleShowWarning}
           />
-          // </div>
         ))}
       </div>
 
@@ -45,13 +44,11 @@ type UserTagProps = {
   img: string;
   userName: string;
   name: string;
-  action: () => void;
+  action: ((e: any) => void) | undefined;
   actionName: "Follow" | "Switch";
 };
 
 const UserTag = ({ img, userName, name, action, actionName }: UserTagProps) => {
-  const warningContext = useContext(CurrentWarningContext);
-
   return (
     <div className={style.tag_container}>
       <div className={style.wrapper_data}>
@@ -69,7 +66,7 @@ const UserTag = ({ img, userName, name, action, actionName }: UserTagProps) => {
         className={`${style.btn} ${
           actionName === "Follow" ? `${style.btn_hov}` : ""
         }`}
-        onClick={warningContext?.handleShowWarning}
+        onClick={action}
       >
         {actionName}
       </button>

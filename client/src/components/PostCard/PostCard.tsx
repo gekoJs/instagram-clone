@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import useChangeTitle from "../../Hooks/useChangeTitle";
 import {
   CommentIcon,
@@ -9,17 +9,41 @@ import {
 } from "../../assets/svg";
 import BookmarkIcon from "../../assets/svg/BookmarkIcon";
 import style from "./PostCard.module.scss";
+import { CurrentWarningContext } from "../../layouts/MainLayout/MainLayout";
 
 const PostCard = () => {
+  const warningContext = useContext(CurrentWarningContext);
   useChangeTitle("Instanel");
 
   const [like, setLike] = useState(false);
   const [saved, setSaved] = useState(false);
 
+  const buttons = [
+    {
+      icon: like ? <UnlikeIcon /> : <LikeIcon />,
+      className: `${style.btn_svg} ${
+        !like ? `${style.like_hov}` : `${style.like}`
+      }`,
+      action: warningContext?.handleShowWarning,
+    },
+    {
+      icon: <CommentIcon />,
+      className: `${style.btn_svg} ${style.comment_hov}`,
+      action: warningContext?.handleShowWarning,
+    },
+    {
+      icon: <ShareIcon />,
+      className: `${style.btn_svg} ${style.share_hov}`,
+      action: warningContext?.handleShowWarning,
+    },
+  ];
   return (
     <article className={style.container}>
       <div className={style.header}>
-        <div className={style.header_wrapper}>
+        <button
+          className={`${style.header_wrapper} ${style.button}`}
+          onClick={warningContext?.handleShowWarning}
+        >
           <img
             src="https://www.anmosugoi.com/wp-content/uploads/2023/09/Kanojo-Okarishimasu-Chizuru-Mizuhara-min-11.jpg"
             alt=""
@@ -28,9 +52,14 @@ const PostCard = () => {
           <h5>usuario</h5>
           <span className={style.dot} />
           <p>20h</p>
-        </div>
+        </button>
 
-        <MoreIcon />
+        <button
+          className={style.button}
+          onClick={warningContext?.handleShowWarning}
+        >
+          <MoreIcon />
+        </button>
       </div>
 
       <div className={style.imgPost_wrapper}>
@@ -43,37 +72,37 @@ const PostCard = () => {
 
       <div className={style.icon_wrapper}>
         <div>
-          <button
-            className={`${style.btn_svg} ${!like ? `${style.like_hov}` : `${style.like}`}`}
-            onClick={() => setLike((prev) => !prev)}
-          >
-            {like ? <UnlikeIcon /> : <LikeIcon />}
-          </button>
-
-          <button className={`${style.btn_svg} ${style.comment_hov}`}>
-            <CommentIcon />
-          </button>
-
-          <button className={`${style.btn_svg} ${style.share_hov}`}>
-            <ShareIcon />
-          </button>
+          {buttons.map((e) => (
+            <button className={e.className} onClick={e.action}>
+              {e.icon}
+            </button>
+          ))}
         </div>
         <button
-          className={`${style.btn_svg} ${!saved ? `${style.share_hov}` : `${style.saved}`}`}
-          onClick={() => setSaved((prev) => !prev)}
+          className={`${style.btn_svg} ${
+            !saved ? `${style.share_hov}` : `${style.saved}`
+          }`}
+          onClick={warningContext?.handleShowWarning}
         >
-          <BookmarkIcon/>
+          <BookmarkIcon />
         </button>
       </div>
 
       <p className={style.likes}>468.543 likes</p>
 
       <p className={style.history}>
-        <span>userName</span> Lorem ipsum dolor sit amet consectetur,
-        adipisicing elit.
+        <button
+          className={style.button}
+          onClick={warningContext?.handleShowWarning}
+        >
+          userName
+        </button>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
       </p>
 
-      <p className={style.view_comments}>View all 245 comments</p>
+      <button className={`${style.view_comments} ${style.button}`}>
+        View all 245 comments
+      </button>
 
       <form>
         <input

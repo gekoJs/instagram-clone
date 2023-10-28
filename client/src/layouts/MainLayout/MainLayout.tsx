@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext } from "react";
 import { Nav } from "../../components";
 import style from "./MainLayout.module.scss";
 import NotAvailable from "../../components/NotAvailable/NotAvailable";
