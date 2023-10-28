@@ -1,5 +1,7 @@
 import { Footer } from "..";
+import { CurrentWarningContext } from "../../layouts/MainLayout/MainLayout";
 import style from "./AsideSuggestions.module.scss";
+import { useContext } from "react";
 
 const AsideSuggestions = () => {
   const arr = [0, 1, 2, 3, 4];
@@ -48,6 +50,8 @@ type UserTagProps = {
 };
 
 const UserTag = ({ img, userName, name, action, actionName }: UserTagProps) => {
+  const warningContext = useContext(CurrentWarningContext);
+
   return (
     <div className={style.tag_container}>
       <div className={style.wrapper_data}>
@@ -65,7 +69,7 @@ const UserTag = ({ img, userName, name, action, actionName }: UserTagProps) => {
         className={`${style.btn} ${
           actionName === "Follow" ? `${style.btn_hov}` : ""
         }`}
-        onClick={action}
+        onClick={warningContext?.handleShowWarning}
       >
         {actionName}
       </button>

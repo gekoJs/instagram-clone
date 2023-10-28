@@ -5,9 +5,15 @@ import IsotipoBWIcon from "../../assets/svg/IsotipoBWIcon";
 import useWidth from "../../Hooks/useWidth";
 import { useState } from "react";
 import MoreModal from "../Modals/MoreModal/MoreModal";
+import useShowWarning from "../../Hooks/useShowWarning";
+import { useContext } from "react";
+import { CurrentWarningContext } from "../../layouts/MainLayout/MainLayout";
 
 const Nav = () => {
   const { width } = useWidth();
+
+  // const { handleShowWarning } = useShowWarning();
+
   const breakPoint = width >= 1264;
 
   const [openModal, setOpenModal] = useState(false);
@@ -27,6 +33,8 @@ const Nav = () => {
     },
   ];
 
+  const warningContext = useContext(CurrentWarningContext);
+
   return (
     <div
       className={`${style.container} ${
@@ -42,6 +50,7 @@ const Nav = () => {
           <button
             className={`${style.nav_btn} ${style.main_btns}`}
             key={btn.text}
+            onClick={warningContext?.handleShowWarning}
           >
             {btn.icon}
             {breakPoint && <p>{btn.text}</p>}

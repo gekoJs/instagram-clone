@@ -1,13 +1,25 @@
 import { AlertIcon } from "../../assets/svg";
+import { CurrentWarningContext } from "../../layouts/MainLayout/MainLayout";
 import style from "./NotAvailable.module.scss";
+import { useContext } from "react";
 
-const NotAvailable = () => {
+type props = {
+  top: number;
+  left: number;
+};
+const NotAvailable = ({ top, left }: props) => {
+  const warningContext = useContext(CurrentWarningContext);
   return (
-    <div className={style.container}>
-      <div className={style.wrapper}>
-        <AlertIcon />
-        <p>Sorry, this function is still unavailable :c</p>
-      </div>
+    <div
+      className={
+        warningContext?.warningActive
+          ? `${style.container} ${style.animation}`
+          : style.container
+      }
+      style={{ top, left }}
+    >
+      <AlertIcon />
+      <p>Function unavailable</p>
     </div>
   );
 };

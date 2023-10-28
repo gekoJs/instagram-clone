@@ -11,6 +11,9 @@ module.exports = (db) => {
     userName: {
       type: DataTypes.STRING,
       allowNull: false,
+      set(value) {
+        this.setDataValue("userName", value.toLowerCase());
+      },
     },
     fullName: {
       type: DataTypes.STRING,
@@ -19,6 +22,9 @@ module.exports = (db) => {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    phone: {
+      type: DataTypes.STRING,
     },
     password: {
       type: DataTypes.STRING,
