@@ -1,36 +1,58 @@
-import { HomeIcon, LikeIcon, Logotipo, SearchIcon } from "../../assets/svg";
+import {
+  CreateIcon,
+  HomeIcon,
+  LikeIcon,
+  Logotipo,
+  SearchIcon,
+} from "../../assets/svg";
 import BurguerMenuIcon from "../../assets/svg/BurguerMenuIcon";
 import style from "./Nav.module.scss";
 import IsotipoBWIcon from "../../assets/svg/IsotipoBWIcon";
 import useWidth from "../../Hooks/useWidth";
-import { useState } from "react";
 import MoreModal from "../Modals/MoreModal/MoreModal";
 import { useContext } from "react";
-import { CurrentWarningContext } from "../../layouts/MainLayout/MainLayout";
+import { CurrentWarningContext } from "../../App";
+import CreateModal from "../Modals/CreateModal/CreateModal";
 
-const Nav = () => {
+type state = {
+  more: boolean;
+  create: boolean;
+};
+type Props = {
+  openModal: state;
+  setOpenModal: React.Dispatch<React.SetStateAction<state>>;
+};
+
+const Nav = ({ openModal, setOpenModal }: Props) => {
   const warningContext = useContext(CurrentWarningContext);
   const { width } = useWidth();
 
   const breakPoint = width >= 1264;
 
-  const [openModal, setOpenModal] = useState(false);
-
   const mainBtns = [
-    { icon: <HomeIcon />, text: "Home", action: () => {} },
+    {
+      icon: <HomeIcon />,
+      text: "Home",
+      action: warningContext?.handleShowWarning,
+    },
     {
       icon: <SearchIcon />,
       text: "Search",
-      action: () => {},
+      action: warningContext?.handleShowWarning,
     },
 
     {
       icon: <LikeIcon />,
       text: "Notifications",
-      action: () => {},
+      action: warningContext?.handleShowWarning,
+    },
+    {
+      icon: <CreateIcon />,
+      text: "Create",
+      action: () =>
+        setOpenModal((prev) => ({ ...prev, create: !openModal.create })),
     },
   ];
-
 
   return (
     <div
@@ -47,7 +69,7 @@ const Nav = () => {
           <button
             className={`${style.nav_btn} ${style.main_btns}`}
             key={btn.text}
-            onClick={warningContext?.handleShowWarning}
+            onClick={btn.action}
           >
             {btn.icon}
             {breakPoint && <p>{btn.text}</p>}
@@ -56,22 +78,27 @@ const Nav = () => {
       </div>
 
       <div className={style.wrapperMore}>
-        {openModal && (
+        {openModal.more && (
           <div
             className={style.modalContainer}
-            onMouseLeave={() => setOpenModal(false)}
+            onMouseLeave={() =>
+              setOpenModal((prev) => ({ ...prev, more: false }))
+            }
           >
             <MoreModal />
           </div>
         )}
         <button
           className={`${style.nav_btn} ${style.main_btns}`}
-          onClick={() => setOpenModal(!openModal)}
+          onClick={() =>
+            setOpenModal((prev) => ({ ...prev, more: !openModal.more }))
+          }
         >
           <BurguerMenuIcon />
           {breakPoint && <p>More</p>}
         </button>
       </div>
+
     </div>
   );
 };

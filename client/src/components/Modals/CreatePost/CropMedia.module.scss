@@ -1,0 +1,44 @@
+.actionWrapper {
+  width: 100%;
+  max-width: 476px;
+  height: 476px;
+  position: relative;
+}
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  background: var(--c11);
+  width: 2.3em;
+  height: 2.3em;
+  border-radius: 100em;
+}
+
+.img {
+  max-width: 476px;
+  height: 100vh;
+  max-height: 476px;
+  object-fit: cover;
+}
+.imgActionsWrapper {
+  width: 100%;
+  padding: 1em;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  left: 0;
+  div {
+    display: flex;
+    gap: 1em;
+  }
+  svg {
+    path {
+      fill: #fff;
+    }
+  }
+}

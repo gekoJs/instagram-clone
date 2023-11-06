@@ -3,15 +3,18 @@ import { Logotipo } from "../../assets/svg";
 import style from "./Signup.module.scss";
 import { Link } from "react-router-dom";
 import useSignUp from "../../Hooks/useSignUp";
+import { useContext } from "react";
+import { CurrentWarningContext } from "../../App";
 
 const Signup = () => {
   useChangeTitle("Instanel - SignUp");
   const { values, errors, handleChange, handleSubmit, userMutation } =
     useSignUp();
 
-  const { isPending, data } = userMutation;
+  const warningContext = useContext(CurrentWarningContext);
 
-  // console.log(error.response);
+  const { isPending } = userMutation;
+
 
   return (
     <section className={style.container}>
@@ -84,12 +87,12 @@ const Signup = () => {
             <div>
               <p className={style.terms}>
                 People who use our service may have uploaded your contact
-                information to Instagram. <span>Learn More</span>
+                information to Instagram. <span onClick={warningContext?.handleShowWarning}>Learn More</span>
               </p>
               <p className={style.terms}>
-                By signing up, you agree to our <span>Terms</span>,{" "}
-                <span>Privacy</span>, <span>Policy</span> and{" "}
-                <span>Cookies Policy</span>
+                By signing up, you agree to our <span onClick={warningContext?.handleShowWarning}>Terms</span>,{" "}
+                <span onClick={warningContext?.handleShowWarning}>Privacy</span>, <span onClick={warningContext?.handleShowWarning}>Policy</span> and{" "}
+                <span onClick={warningContext?.handleShowWarning}>Cookies Policy</span>
               </p>
 
               <button type="submit">

@@ -1,17 +1,10 @@
 const { User, Post, Like } = require("../../index");
-const { Op } = require("sequelize");
 
-async function FindUser(user) {
+async function FindUserById(id) {
   try {
     const userDb = await User.findOne({
       include: [Post, Like],
-      where: {
-        [Op.or]: [
-          { userName: user },
-          { email: user },
-          { phone: user },
-        ],
-      },
+      where: { id },
     });
 
     if (!userDb) {
@@ -24,4 +17,4 @@ async function FindUser(user) {
   }
 }
 
-module.exports = FindUser;
+module.exports = FindUserById;

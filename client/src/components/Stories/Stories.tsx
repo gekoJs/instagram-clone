@@ -1,4 +1,4 @@
-import { CurrentWarningContext } from "../../layouts/MainLayout/MainLayout";
+import { CurrentWarningContext } from "../../App";
 import style from "./Stories.module.scss";
 import {useContext} from "react"
 

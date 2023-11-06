@@ -42,6 +42,7 @@ const AllCards = () => {
           <hr className={style.hr} />
         </div>
       ))}
+      
       {/* {data?.data?.map((e: any) => (
         <div key={e.id}>
           <PostCard />

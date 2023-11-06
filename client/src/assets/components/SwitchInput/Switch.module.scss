@@ -1,0 +1,26 @@
+.container {
+  min-width: 40px;
+  height: 24px;
+  background-color: var(--c11);
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 2px;
+  transition: background 0.2s ease;
+}
+
+.ball {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background-color: var(--c1);
+  pointer-events: none;
+  transition: transform 0.2s ease;
+}
+.active {
+  background-color: var(--c5);
+}
+.active_btn {
+  transform: translateX(16px);
+}

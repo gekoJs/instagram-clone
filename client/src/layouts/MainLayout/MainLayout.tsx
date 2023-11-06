@@ -1,45 +1,36 @@
-import React, { createContext } from "react";
+import { useState, useEffect } from "react";
 import { Nav } from "../../components";
 import style from "./MainLayout.module.scss";
-import NotAvailable from "../../components/NotAvailable/NotAvailable";
-import useShowWarning from "../../Hooks/useShowWarning";
+import CreatePost from "../../components/Modals/CreatePost/CreatePost";
 
 //-----------------------------------------------
 
 type Props = {
   children: React.ReactNode;
 };
-type Context = {
-  handleShowWarning: (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => void;
-
-  warningActive: boolean;
-};
 
 //-----------------------------------------------
 
-export const CurrentWarningContext = createContext<Context | null>(null);
-
 const MainLayout = ({ children }: Props) => {
-  const { warningActive, positions, handleShowWarning } = useShowWarning();
+  const [openModal, setOpenModal] = useState({
+    more: false,
+    create: false,
+  });
+
+  useEffect(() => {
+    if (openModal.create) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [openModal]);
 
   return (
     <div className={style.container}>
-      <CurrentWarningContext.Provider
-        value={{
-          handleShowWarning,
-          warningActive,
-        }}
-      >
-        
+      <Nav openModal={openModal} setOpenModal={setOpenModal} />
+      {children}
 
-        <Nav />
-        {children}
-        {warningActive && (
-          <NotAvailable top={positions.top} left={positions.left} />
-        )}
-      </CurrentWarningContext.Provider>
+      {openModal.create && <CreatePost setOpenModal={setOpenModal} />}
     </div>
   );
 };

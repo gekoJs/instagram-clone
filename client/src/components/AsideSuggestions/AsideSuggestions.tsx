@@ -1,5 +1,5 @@
 import { Footer } from "..";
-import { CurrentWarningContext } from "../../layouts/MainLayout/MainLayout";
+import { CurrentWarningContext } from "../../App";
 import style from "./AsideSuggestions.module.scss";
 import { useContext } from "react";
 

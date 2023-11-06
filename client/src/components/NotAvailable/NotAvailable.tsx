@@ -1,5 +1,5 @@
+import { CurrentWarningContext } from "../../App";
 import { AlertIcon } from "../../assets/svg";
-import { CurrentWarningContext } from "../../layouts/MainLayout/MainLayout";
 import style from "./NotAvailable.module.scss";
 import { useContext } from "react";
 

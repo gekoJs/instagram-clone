@@ -4,7 +4,7 @@ import DarkThemeIcon from "../../../assets/svg/DarkThemeIcon";
 import SettingsIcon from "../../../assets/svg/SettingsIcon";
 import LogOut from "../../../helpers/LogOut";
 import style from "./MoreModal.module.scss";
-import { CurrentWarningContext } from "../../../layouts/MainLayout/MainLayout";
+import { CurrentWarningContext } from "../../../App";
 
 const MoreModal = () => {
   const warningContext = useContext(CurrentWarningContext);

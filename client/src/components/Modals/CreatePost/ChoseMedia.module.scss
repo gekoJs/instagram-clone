@@ -1,0 +1,41 @@
+.modalWrapper {
+  border-radius: 1em;
+  width: 100%;
+  max-width: 452px;
+  overflow: hidden;
+  background: #fff;
+  header {
+    border-bottom: 1px solid #a1a1a1;
+    text-align: center;
+    padding: 0.8em;
+    font-weight: 600;
+  }
+}
+.actionWrapper {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  height: 90vh;
+  max-height: 440px;
+}
+
+.input {
+  display: none;
+}
+.btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn_search {
+  background: var(--c5);
+  padding: 0.6em;
+  border-radius: 0.6em;
+  color: var(--c1);
+  font-family: var(--f1);
+}

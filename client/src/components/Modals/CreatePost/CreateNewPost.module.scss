@@ -1,0 +1,138 @@
+.actionWrapper {
+  display: flex;
+  width: 100%;
+  color: var(--c11);
+  path {
+    fill: var(--c11);
+  }
+}
+.img {
+  max-width: 476px;
+  height: 100vh;
+  max-height: 476px;
+  object-fit: cover;
+}
+.imgContainer {
+  padding: 0;
+  position: relative;
+}
+.profileUser {
+  p {
+    font-size: 0.8em;
+  }
+}
+.btn {
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.asideSection {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 324px;
+  max-height: 476px;
+  overflow: auto;
+}
+.profileImg {
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+}
+.bigInput {
+  height: 100pxas;
+}
+.wrapperFlex {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 1em;
+}
+.spaceBetween {
+  justify-content: space-between;
+}
+.textArea {
+  border: none;
+  font-size: 16px;
+  height: 120px;
+  resize: none;
+  width: 1000px;
+  max-width: 300px;
+  padding: 1em;
+  outline: none;
+  font-family: var(--f1);
+}
+.emojiWrapper {
+  span {
+    font-size: 0.8em;
+  }
+}
+.locationWrapper {
+  input {
+    width: 100%;
+    padding: 1em;
+    outline: none;
+    border: none;
+    font-family: var(--f1);
+  }
+}
+
+.advancedSettings {
+  font-size: 0.9em;
+  font-weight: 400;
+  font-family: var(--f1);
+  svg {
+    transition: transform 0.2s ease;
+  }
+}
+.accessibilitAct {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  p {
+    font-size: 12px;
+  }
+  img {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+  }
+  .inputWrapper {
+    display: flex;
+    align-items: center;
+    input {
+      border: none;
+      outline: none;
+      height: 44px;
+      width: 100%;
+      padding: 0 1em;
+      font-family: var(--f1);
+    }
+  }
+}
+.active {
+  svg {
+    transform: rotate(-180deg);
+  }
+}
+
+.configWrapper {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  .wrapperFlexConfgTitle {
+    display: flex;
+    justify-content: space-between;
+  }
+  a {
+    color: var(--c2);
+    font-size: 12px;
+  }
+  .descripConfig {
+    font-size: 10px;
+    color: var(--c6);
+  }
+}

@@ -22,6 +22,10 @@ async function getUserLogIn(user: string, password: string) {
   ).then((resp) => resp.json());
 }
 
+async function getUserById(id: string){
+  return await fetch(routeUsers + `?id=${id}`).then(resp => resp.json())
+}
+
 async function postUser(data: UserData) {
   return await fetch(routeUsers, {
     method: "POST",
@@ -32,4 +36,4 @@ async function postUser(data: UserData) {
   }).then((resp) => resp.json());
 }
 
-export { getUsers, getUserLogIn, postUser };
+export { getUsers, getUserLogIn, postUser, getUserById };

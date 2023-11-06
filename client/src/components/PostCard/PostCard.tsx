@@ -9,7 +9,7 @@ import {
 } from "../../assets/svg";
 import BookmarkIcon from "../../assets/svg/BookmarkIcon";
 import style from "./PostCard.module.scss";
-import { CurrentWarningContext } from "../../layouts/MainLayout/MainLayout";
+import { CurrentWarningContext } from "../../App";
 
 const PostCard = () => {
   const warningContext = useContext(CurrentWarningContext);
@@ -72,8 +72,8 @@ const PostCard = () => {
 
       <div className={style.icon_wrapper}>
         <div>
-          {buttons.map((e) => (
-            <button className={e.className} onClick={e.action}>
+          {buttons.map((e, i) => (
+            <button className={e.className} onClick={e.action} key={i}>
               {e.icon}
             </button>
           ))}

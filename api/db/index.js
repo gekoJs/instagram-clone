@@ -41,7 +41,7 @@ const connectToDB = async () => {
     return;
   }
   try {
-    await db.sync({ force: true });
+    await db.sync({ force: false });
     isConnected = true;
     console.log("DB connected");
     return;

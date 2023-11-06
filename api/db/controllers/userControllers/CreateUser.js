@@ -4,9 +4,7 @@ const { User } = require("../../index");
 async function CreateUser(obj) {
   const { userName, fullName, email, password } = obj;
   const objValues = { userName, fullName, email, password };
-  
-  console.log("CreateUser",obj);
-  
+    
   try {
     if (Object.values(objValues).some((e) => e === undefined)) {
       const missing = Object.keys(objValues)

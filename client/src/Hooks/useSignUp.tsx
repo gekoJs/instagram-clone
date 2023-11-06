@@ -38,7 +38,7 @@ function useSignUp() {
           userName: "",
           password: "",
         });
-        LogInHelper(data.data);
+        LogInHelper(data);
       }
       setErrors((prev) => ({ ...prev, signUp: data.error }));
     },
@@ -60,7 +60,6 @@ function useSignUp() {
     setErrors(validatedErrors);
 
     if (Object.keys(validatedErrors).length === 0) {
-      console.log("useSignUp", values);
       userMutation.mutate(values);
     }
   }
