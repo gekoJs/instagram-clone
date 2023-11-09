@@ -12,15 +12,11 @@ import useWidth from "../../Hooks/useWidth";
 import MoreModal from "../Modals/MoreModal/MoreModal";
 import { useContext } from "react";
 import { CurrentWarningContext } from "../../App";
-import CreateModal from "../Modals/CreateModal/CreateModal";
+import { stateOpenModals } from "../../layouts/MainLayout/MainLayout";
 
-type state = {
-  more: boolean;
-  create: boolean;
-};
 type Props = {
-  openModal: state;
-  setOpenModal: React.Dispatch<React.SetStateAction<state>>;
+  openModal: stateOpenModals;
+  setOpenModal: React.Dispatch<React.SetStateAction<stateOpenModals>>;
 };
 
 const Nav = ({ openModal, setOpenModal }: Props) => {
@@ -98,7 +94,6 @@ const Nav = ({ openModal, setOpenModal }: Props) => {
           {breakPoint && <p>More</p>}
         </button>
       </div>
-
     </div>
   );
 };

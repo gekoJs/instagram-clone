@@ -9,8 +9,7 @@ function useShowWarning() {
   ) {
     setPositions({
       top: e.pageY - 20,
-      left:
-        e.pageX > window.innerWidth / 2 ? e.pageX - 200 : e.pageX + 20,
+      left: e.pageX > window.innerWidth / 2 ? e.pageX - 200 : e.pageX + 20,
     });
 
     setWarningActive(true);
@@ -18,8 +17,8 @@ function useShowWarning() {
 
   useEffect(() => {
     if (warningActive) {
-      const warningId = setTimeout(() => setWarningActive(false), 1500);
-      return () => clearTimeout(warningId);
+      const id = setTimeout(() => setWarningActive(false), 1500);
+      return () => clearTimeout(id);
     }
   }, [warningActive]);
 

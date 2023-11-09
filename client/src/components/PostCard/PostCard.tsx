@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import useChangeTitle from "../../Hooks/useChangeTitle";
 import {
   CommentIcon,
@@ -10,12 +10,22 @@ import {
 import BookmarkIcon from "../../assets/svg/BookmarkIcon";
 import style from "./PostCard.module.scss";
 import { CurrentWarningContext } from "../../App";
+import { modalOpenProps } from "../AllCards/AllCards";
 
-const PostCard = () => {
+//-----------------------------------------------
+
+type props = {
+  modalOpenProps: modalOpenProps;
+};
+
+//-----------------------------------------------
+
+const PostCard = ({ modalOpenProps }: props) => {
   const warningContext = useContext(CurrentWarningContext);
   useChangeTitle("Instanel");
 
   const [like, setLike] = useState(false);
+  const [likeAnimation, setLikeAnimation] = useState(false);
   const [saved, setSaved] = useState(false);
 
   const buttons = [
@@ -37,6 +47,27 @@ const PostCard = () => {
       action: warningContext?.handleShowWarning,
     },
   ];
+
+  function handleoptionsModal() {
+    modalOpenProps.setOpenModal(true);
+  }
+
+  function handleDoubleClickLike() {
+    if (!likeAnimation) {
+      setLike(true);
+      setLikeAnimation(true);
+
+      setTimeout(() => {
+        setLikeAnimation(false);
+        console.log("prueba")
+      }, 1000);
+    }
+  }
+
+  useEffect(() => {
+    setLike;
+  }, []);
+
   return (
     <article className={style.container}>
       <div className={style.header}>
@@ -54,20 +85,26 @@ const PostCard = () => {
           <p>20h</p>
         </button>
 
-        <button
-          className={style.button}
-          onClick={warningContext?.handleShowWarning}
-        >
+        <button className={style.button} onClick={handleoptionsModal}>
           <MoreIcon />
         </button>
       </div>
 
-      <div className={style.imgPost_wrapper}>
+      <div
+        className={style.imgPost_wrapper}
+        onDoubleClick={handleDoubleClickLike}
+      >
         <img
           className={style.imgPost}
           src="https://www.anmosugoi.com/wp-content/uploads/2023/09/Kanojo-Okarishimasu-Chizuru-Mizuhara-min-11.jpg"
           alt="Foto"
         />
+
+        <div
+          className={`${style.bigLike} ${likeAnimation && style.likeActive}`}
+        >
+          <UnlikeIcon />
+        </div>
       </div>
 
       <div className={style.icon_wrapper}>

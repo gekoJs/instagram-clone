@@ -9,6 +9,10 @@ type Props = {
   children: React.ReactNode;
 };
 
+export type stateOpenModals = {
+  more: boolean;
+  create: boolean;
+};
 //-----------------------------------------------
 
 const MainLayout = ({ children }: Props) => {

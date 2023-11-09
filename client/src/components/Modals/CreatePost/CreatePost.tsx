@@ -1,27 +1,26 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import style from "./CreatePost.module.scss";
 import { LeftArrowIcon } from "../../../assets/svg";
 import CloseIcon from "../../../assets/svg/CloseIcon";
 import ChoseMedia from "./ChoseMedia";
 import CropMedia from "./CropMedia";
 
-import ballon from "../../../assets/images/hotairballoon.jpg";
 import EditMedia from "./EditMedia";
 import CreateNewPost from "./CreateNewPost";
+import { stateOpenModals } from "../../../layouts/MainLayout/MainLayout";
 //-----------------------------------------------
 
-type state = {
-  more: boolean;
-  create: boolean;
-};
 type Props = {
-  setOpenModal: React.Dispatch<React.SetStateAction<state>>;
+  setOpenModal: React.Dispatch<React.SetStateAction<stateOpenModals>>;
 };
 type EditPictureProps = {
   leftArrowBtnAction: () => void;
   headerTitle: string;
   component: React.ReactNode;
-  setModalToDisplay: React.Dispatch<React.SetStateAction<number>>;
+  nextAction: {
+    name: string;
+    action: () => void;
+  };
 };
 
 //-----------------------------------------------
@@ -47,18 +46,30 @@ const CreatePost = ({ setOpenModal }: Props) => {
       id: 0,
       headerTitle: "Crop",
       leftArrowBtnAction: () => setOpenModalDiscard(true),
+      nextAction: {
+        name: "Next",
+        action: () => setModalToDisplay((prev) => prev + 1),
+      },
       component: <CropMedia media={media} />,
     },
     {
       id: 1,
       headerTitle: "Edit",
       leftArrowBtnAction: () => setModalToDisplay((prev) => prev - 1),
+      nextAction: {
+        name: "Next",
+        action: () => setModalToDisplay((prev) => prev + 1),
+      },
       component: <EditMedia media={media} />,
     },
     {
       id: 2,
       headerTitle: "Create new post",
       leftArrowBtnAction: () => setModalToDisplay((prev) => prev - 1),
+      nextAction: {
+        name: "Share",
+        action: () => {},
+      },
       component: <CreateNewPost media={media} />,
     },
   ];
@@ -85,10 +96,10 @@ const CreatePost = ({ setOpenModal }: Props) => {
             e.id === modalToDisplay && (
               <MainModal
                 key={e.id}
-                setModalToDisplay={setModalToDisplay}
                 leftArrowBtnAction={e.leftArrowBtnAction}
                 headerTitle={e.headerTitle}
                 component={e.component}
+                nextAction={e.nextAction}
               />
             )
         )
@@ -108,7 +119,7 @@ const MainModal = ({
   leftArrowBtnAction,
   headerTitle,
   component,
-  setModalToDisplay,
+  nextAction,
 }: EditPictureProps) => {
   return (
     <div className={style.modalWrapper}>
@@ -121,9 +132,9 @@ const MainModal = ({
 
         <button
           className={`${style.btn} ${style.nextBtn}`}
-          onClick={() => setModalToDisplay((prev) => prev + 1)}
+          onClick={nextAction.action}
         >
-          Next
+          {nextAction.name}
         </button>
       </header>
       {component}
@@ -136,7 +147,7 @@ const DiscardModal = ({
   setOpenModal,
 }: {
   setOpenModalDiscard: React.Dispatch<React.SetStateAction<boolean>>;
-  setOpenModal: React.Dispatch<React.SetStateAction<state>>;
+  setOpenModal: React.Dispatch<React.SetStateAction<stateOpenModals>>;
 }) => {
   const containerRef = useRef(null);
 
